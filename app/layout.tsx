@@ -5,6 +5,8 @@ import "./panels.css";
 import "./content.css";
 import "./responsive.css";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const sans = Inter({
   subsets: ["latin", "latin-ext"],
   variable: "--font-sans",
@@ -20,7 +22,10 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Nasdaq Sinyal Radarı · %20+ hareket ve haber analizi",
   description:
-    "Nasdaq hisselerini tarar, haber duyarlılığını analiz eder ve %20 ve üzeri artışları sinyal ve grafikle sunar.",
+    "Nasdaq hisselerini canlı tarar, haber duyarlılığını analiz eder ve %20 ve üzeri artışları anlık bildirim ve grafikle sunar.",
+  icons: {
+    icon: [{ url: `${BASE}/icon.svg`, type: "image/svg+xml" }],
+  },
 };
 
 export const viewport: Viewport = {
