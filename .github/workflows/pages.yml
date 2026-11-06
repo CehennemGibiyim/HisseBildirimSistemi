@@ -1,4 +1,4 @@
-name: Web surumunu yayinla
+name: Web sürümünü yayınla
 
 on:
   push:
@@ -27,11 +27,15 @@ jobs:
         with:
           node-version: 22
 
-      - name: Bagimliliklari kur
+      - name: Bağımlılıkları kur
         run: npm install --no-audit --no-fund
 
-      - name: Tip kontrolu
+      - name: Tip kontrolü
         run: npm run typecheck
+
+      - name: Yedek anlık görüntüyü tazele
+        continue-on-error: true
+        run: npm run snapshot
 
       - name: Statik siteyi derle
         env:
