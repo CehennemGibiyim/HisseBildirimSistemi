@@ -67,48 +67,48 @@ export function marketSession(now = new Date()): MarketSession {
   if (!weekend && current >= openMin && current < closeMin) {
     return {
       isOpen: true,
-      label: "Seans acik",
+      label: "Seans açık",
       timezone: TZ,
       clock,
-      nextEvent: `Kapanisa ${humanDuration(closeMin - current)}`,
+      nextEvent: `Kapanışa ${humanDuration(closeMin - current)}`,
     };
   }
 
   if (!weekend && current >= preMin && current < openMin) {
     return {
       isOpen: false,
-      label: "Acilis oncesi",
+      label: "Açılış öncesi",
       timezone: TZ,
       clock,
-      nextEvent: `Acilisa ${humanDuration(openMin - current)}`,
+      nextEvent: `Açılışa ${humanDuration(openMin - current)}`,
     };
   }
 
   if (!weekend && current >= closeMin && current < afterMin) {
     return {
       isOpen: false,
-      label: "Kapanis sonrasi",
+      label: "Kapanış sonrası",
       timezone: TZ,
       clock,
-      nextEvent: "Sonrasi seans 20:00'de kapanir",
+      nextEvent: "Sonrası seans 20:00'de kapanır",
     };
   }
 
   if (current >= closeMin || weekend) {
     return {
       isOpen: false,
-      label: "Seans kapali",
+      label: "Seans kapalı",
       timezone: TZ,
       clock,
-      nextEvent: "Son kapanis verileri gosteriliyor",
+      nextEvent: "Son kapanış verileri gösteriliyor",
     };
   }
 
   return {
     isOpen: false,
-    label: "Seans kapali",
+    label: "Seans kapalı",
     timezone: TZ,
     clock,
-    nextEvent: `Acilisa ${humanDuration(openMin - current)}`,
+    nextEvent: `Açılışa ${humanDuration(openMin - current)}`,
   };
 }
