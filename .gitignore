@@ -1,0 +1,22 @@
+# bagimliliklar
+node_modules/
+
+# Next.js ciktisi
+.next/
+out/
+build/
+
+# ortam ve yerel dosyalar
+.env
+.env.*
+!.env.example
+.devserver.log
+*.log
+
+# derleyici onbellegi
+*.tsbuildinfo
+next-env.d.ts
+
+# isletim sistemi
+.DS_Store
+Thumbs.db
