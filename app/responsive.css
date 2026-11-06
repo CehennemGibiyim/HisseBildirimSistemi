@@ -1,0 +1,139 @@
+/* ------------------------------ responsive ----------------------------- */
+
+@media (max-width: 1320px) {
+  .brand__text p {
+    display: none;
+  }
+  .topbar {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .col--side {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 14px;
+  }
+
+  .news-refresh {
+    grid-column: 1 / -1;
+  }
+
+  .signal-list {
+    max-height: 520px;
+  }
+
+  .movers__body {
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 900px) {
+  .topbar {
+    flex-wrap: wrap;
+    padding: 10px 14px;
+  }
+
+  .topbar__status {
+    order: 3;
+  }
+
+  .topbar__controls {
+    order: 4;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero__metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .main {
+    padding: 12px 12px 6px;
+  }
+
+  .footer {
+    padding: 12px 14px 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .col--side {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero__head {
+    padding: 13px 14px 10px;
+  }
+
+  .hero__price {
+    align-items: flex-start;
+  }
+
+  .hero__symbol-row h2 {
+    font-size: 22px;
+  }
+
+  .hero__last {
+    font-size: 23px;
+  }
+
+  .chart-shell {
+    height: 320px;
+    margin: 0 4px 4px;
+  }
+
+  .chart-toolbar {
+    padding: 0 14px 8px;
+  }
+
+  .hero__metrics {
+    margin: 0 14px 10px;
+  }
+
+  .brand__text h1 {
+    font-size: 12.5px;
+  }
+
+  .movers__labels,
+  .mover {
+    grid-template-columns: 16px minmax(0, 1fr) 68px 58px;
+  }
+
+  .panel__head {
+    padding: 12px 13px 10px;
+  }
+
+  .news__item {
+    padding: 10px 13px;
+  }
+
+  .toasts {
+    right: 10px;
+    left: 10px;
+    bottom: 10px;
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track,
+  .brand__bar,
+  .pulse--hot,
+  .session--open .session__dot,
+  .live-dot.is-live,
+  .chip__dot {
+    animation: none !important;
+  }
+}

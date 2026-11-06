@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
+import "./base.css";
+import "./panels.css";
+import "./content.css";
+import "./responsive.css";
 
 const sans = Inter({
   subsets: ["latin", "latin-ext"],
