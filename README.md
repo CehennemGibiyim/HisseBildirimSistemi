@@ -12,10 +12,11 @@ tamamı **statik web** olarak GitHub Pages üzerinde çalışır.
 GitHub Pages yalnızca statik dosya sunar ve Nasdaq/haber sağlayıcıları tarayıcıdan yapılan isteklere kapalıdır
 (CORS). Bu yüzden veri toplama işi tarayıcıdan **GitHub Actions**'a taşındı:
 
-1. `Tarama anlık görüntüsü` iş akışı **5 dakikada bir** çalışır, `scanner.tradingview.com` üzerinden Nasdaq taramasını
-   ve Yahoo Finance RSS manşetlerini toplar.
+1. `Tarama anlık görüntüsü` iş akışı **2 dakikada bir** tazeler, yani `scanner.tradingview.com` üzerinden Nasdaq taramasını
+   ve Yahoo Finance RSS manşetlerini 2 dakikalık turlarla toplar. (GitHub zamanlayıcısı en sık 5 dakikada bir tetiklediği
+   için iş tek seferde ~6 saate kadar kendi içinde döner; süre bitince zamanlayıcı yeni bir tur başlatır.)
 2. Sonuç `data` dalındaki `market.json` dosyasına yazılır (tek commit, kuvvetle güncellenir).
-3. Panel bu dosyayı 15 saniyede bir okur, eşik/ölçüt değişimlerini tarayıcıda anında yeniden hesaplar.
+3. Panel bu dosyayı 2 dakikada bir okur, eşik/ölçüt değişimlerini tarayıcıda anında yeniden hesaplar.
 
 Dosyaya ulaşılamazsa depoyla birlikte yayınlanan yedek anlık görüntü (`public/data/market.json`) kullanılır ve panel
 bunu "yedek görüntü" uyarısıyla bildirir. Grafik, TradingView'ın gömülebilir widget'ıyla gösterilir.
@@ -68,7 +69,7 @@ BASE_PATH=/HisseBildirimSistemi NEXT_PUBLIC_BASE_PATH=/HisseBildirimSistemi npm 
 
 ## Sınırlar
 
-- Tarama **5 dakikada bir** tazelenir; fiyatlar anlık değil, son tarama anına aittir (panel bunu gösterir).
+- Tarama **2 dakikada bir** tazelenir; fiyatlar anlık değil, son tarama anına aittir (panel bunu gösterir).
 - Veriler gecikmeli olabilir ve **yatırım tavsiyesi değildir**.
 - Tarayıcı bildirimi yalnızca panel açıkken çalışır; kapalı sekme için sunucu tarafı bir kanal (Telegram/e-posta)
   gerekir.
