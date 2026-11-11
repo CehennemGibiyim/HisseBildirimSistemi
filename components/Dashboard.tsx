@@ -14,7 +14,7 @@ import { TRIGGER_LABELS } from "@/lib/signals";
 import { buildSnapshotMarket, loadSnapshot } from "@/lib/snapshot";
 import type { BaselineMode, MarketResponse, NewsItem, ScanQuote, Signal } from "@/lib/types";
 
-const REFRESH_MS = 15_000;
+const REFRESH_MS = 120_000;
 const ALERT_COOLDOWN_MS = 30 * 60_000;
 const FIRED_KEY = "nasdaq-radar:fired:v2";
 
@@ -399,7 +399,7 @@ export default function Dashboard() {
 
       <footer className="footer">
         <span>
-          Tarama: TradingView Nasdaq tarayıcısı · GitHub Actions ile 5 dk'da bir tazelenen anlık görüntü · Grafik:
+          Tarama: TradingView Nasdaq tarayıcısı · GitHub Actions ile 2 dk'da bir tazelenen anlık görüntü · Grafik:
           TradingView · veriler gecikmeli olabilir
         </span>
         <span className="footer__warn">Yatırım tavsiyesi değildir. Sinyaller fiyat hareketine ve haber tonuna dayanır.</span>
