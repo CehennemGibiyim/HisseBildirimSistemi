@@ -102,7 +102,7 @@ export default function HeroPanel({
           ))}
         </div>
         <span className="chart-toolbar__note">
-          Eşik %{threshold} · grafik TradingView · tarama 15 sn'de bir yeniden hesaplanır
+          Eşik %{threshold} · grafik TradingView · tarama 2 dk'da bir yenilenir
         </span>
       </div>
 
