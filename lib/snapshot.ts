@@ -3,7 +3,7 @@ import { scoreHeadline } from "./sentiment";
 import { buildQuotes, buildSignals } from "./signals";
 import type { BaselineMode, MarketResponse, NewsItem, ScanRow } from "./types";
 
-/** GitHub Actions'in 5 dakikada bir tazeledigi tarama anlik goruntusu. */
+/** GitHub Actions'ın 2 dakikada bir tazelediği tarama anlık görüntüsü. */
 export interface SnapshotHeadline {
   title: string;
   link: string;
@@ -26,7 +26,7 @@ export interface SnapshotMarket {
 
 const RAW_URL = "https://raw.githubusercontent.com/CehennemGibiyim/HisseBildirimSistemi/data/market.json";
 const BUNDLED_URL = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/market.json`;
-const FIVE_MIN = 5 * 60_000;
+const REFRESH_BUCKET = 2 * 60_000;
 
 function num(value: unknown): number {
   const parsed = typeof value === "number" ? value : Number(value);
@@ -44,7 +44,7 @@ function normalize(snapshot: Snapshot): Snapshot | null {
     quotes.push({
       symbol,
       name: String(row?.name ?? symbol),
-      sector: String(row?.sector ?? "Diger"),
+      sector: String(row?.sector ?? "Diğer"),
       price,
       changePct: num(row?.changePct),
       changeAbs: num(row?.changeAbs),
@@ -92,11 +92,11 @@ async function request(url: string): Promise<Snapshot | null> {
 }
 
 /**
- * Once GitHub'daki 5 dakikalik anlik goruntu denenir; oradan veri gelmezse
- * depoyla birlikte yayinlanan yedek dosya kullanilir.
+ * Önce GitHub'daki 2 dakikalık anlık görüntü denenir; oradan veri gelmezse
+ * depoyla birlikte yayınlanan yedek dosya kullanılır.
  */
 export async function loadSnapshot(): Promise<{ snapshot: Snapshot; source: "live" | "bundled" } | null> {
-  const bucket = Math.floor(Date.now() / FIVE_MIN);
+  const bucket = Math.floor(Date.now() / REFRESH_BUCKET);
   const live = await request(`${RAW_URL}?t=${bucket}`);
   if (live) return { snapshot: live, source: "live" };
 

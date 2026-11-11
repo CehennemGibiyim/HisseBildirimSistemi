@@ -4,7 +4,7 @@
  *
  * Statik site (GitHub Pages) tarayıcıdan TradingView'a istek atamaz (CORS kapalı),
  * bu yüzden tarama GitHub Actions içinde burada yapılır ve `data` dalına yazılır.
- * Site her 15 saniyede bu dosyayı okur; dosya 5 dakikada bir tazelenir.
+ * Site bu dosyayı 2 dakikada bir okur; dosya 2 dakikada bir tazelenir.
  */
 
 import { mkdir, writeFile, readFile } from "node:fs/promises";
