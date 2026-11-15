@@ -54,6 +54,9 @@ function normalize(snapshot: Snapshot): Snapshot | null {
       low: num(row?.low) || price,
       volume: num(row?.volume),
       marketCap: num(row?.marketCap),
+      relVolume: num(row?.relVolume) || undefined,
+      week52High: num(row?.week52High) || undefined,
+      streak: num(row?.streak) || undefined,
     });
   }
 
