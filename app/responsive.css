@@ -1,5 +1,86 @@
 /* ------------------------------ responsive ----------------------------- */
 
+/* Akışkan yerleşim: sabit genişlikler yerine görünüm ölçüsüne uyum ---------------- */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Kolon flex içindeki bloklar min-content genişliğine kilitlenmesin */
+.app > *,
+.topbar__controls,
+.ticker {
+  min-width: 0;
+}
+
+/* Grid/flex çocuklarının taşmasını engelle */
+.main,
+.col,
+.panel,
+.panel__head,
+.hero__head,
+.hero__id,
+.hero__price,
+.hero__metrics,
+.stats,
+.movers,
+.movers__body,
+.mover,
+.signal-list,
+.signal__name,
+.news__item,
+.toast {
+  min-width: 0;
+}
+
+/* Uzun şirket adı, manşet ve etiketler kırılabilsin */
+.hero__name,
+.mover__name,
+.news__title,
+.signal__name,
+.toast__title,
+.toast__sub,
+.footer span,
+.brand__text h1 {
+  overflow-wrap: anywhere;
+}
+
+/* Grafik yüksekliği görünüm yüksekliğine uyum sağlasın */
+.chart-shell {
+  height: clamp(280px, 44dvh, 396px);
+}
+
+/* Dokunma hedefleri en az 34-44 px */
+.seg button {
+  min-height: 34px;
+  padding: 6px 12px;
+}
+
+.seg--ranges button {
+  min-width: 44px;
+}
+
+.btn--accent,
+.news-refresh {
+  min-height: 38px;
+}
+
+.mover {
+  min-height: 40px;
+}
+
+.toast__close {
+  min-width: 36px;
+  min-height: 36px;
+}
+
+/* Fiyat/değişim sütunları da ölçeklensin */
+.movers__labels,
+.mover {
+  grid-template-columns: 20px minmax(0, 1fr) clamp(58px, 6.5vw, 78px) clamp(52px, 6vw, 68px);
+}
+
 @media (max-width: 1320px) {
   .brand__text p {
     display: none;
@@ -16,13 +97,21 @@
 
   .col--side {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
     gap: 14px;
   }
 
   .news-refresh {
     grid-column: 1 / -1;
+  }
+}
+
+/* Yan panel yalnızca 961-1180 px arasında iki kolon kalır; altında tek kolona iner
+   (784 px gibi ara genişliklerde tablonun sıkışmasını önler). */
+@media (max-width: 1180px) and (min-width: 961px) {
+  .col--side {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
   .signal-list {
@@ -37,7 +126,11 @@
 @media (max-width: 900px) {
   .topbar {
     flex-wrap: wrap;
-    padding: 10px 14px;
+    gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
   }
 
   .topbar__status {
@@ -48,7 +141,20 @@
     order: 4;
     width: 100%;
     overflow-x: auto;
-    padding-bottom: 2px;
+    padding-bottom: 4px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%);
+  }
+
+  .topbar__controls > * {
+    scroll-snap-align: start;
+  }
+
+  /* iOS odakta sayfayı büyütmesin */
+  .topbar select {
+    font-size: 16px;
   }
 
   .stats {
@@ -65,14 +171,25 @@
 
   .footer {
     padding: 12px 14px 20px;
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+  }
+
+  .seg button {
+    min-height: 38px;
+  }
+
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .control {
+    min-height: 38px;
   }
 }
 
 @media (max-width: 720px) {
-  .col--side {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
   .hero__head {
     padding: 13px 14px 10px;
   }
@@ -81,16 +198,7 @@
     align-items: flex-start;
   }
 
-  .hero__symbol-row h2 {
-    font-size: 22px;
-  }
-
-  .hero__last {
-    font-size: 23px;
-  }
-
   .chart-shell {
-    height: 320px;
     margin: 0 4px 4px;
   }
 
@@ -102,13 +210,9 @@
     margin: 0 14px 10px;
   }
 
-  .brand__text h1 {
-    font-size: 12.5px;
-  }
-
   .movers__labels,
   .mover {
-    grid-template-columns: 16px minmax(0, 1fr) 68px 58px;
+    grid-template-columns: 16px minmax(0, 1fr) clamp(56px, 15vw, 70px) clamp(50px, 13vw, 62px);
   }
 
   .panel__head {
@@ -119,11 +223,65 @@
     padding: 10px 13px;
   }
 
+  .mover {
+    min-height: 44px;
+  }
+
   .toasts {
-    right: 10px;
-    left: 10px;
-    bottom: 10px;
+    right: max(10px, env(safe-area-inset-right));
+    left: max(10px, env(safe-area-inset-left));
+    bottom: max(10px, env(safe-area-inset-bottom));
     max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  .chart-toolbar__note {
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .movers__labels,
+  .mover {
+    grid-template-columns: 14px minmax(0, 1fr) clamp(52px, 15vw, 62px);
+  }
+
+  .mover__price,
+  .movers__labels span:nth-child(3) {
+    display: none;
+  }
+
+  .main {
+    padding: 10px 10px 4px;
+  }
+}
+
+/* Dokunmatik cihazlarda hedefler 40 px'in altına inmesin */
+@media (pointer: coarse) {
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .control {
+    min-height: 40px;
+  }
+
+  .seg button {
+    min-height: 40px;
+  }
+
+  .mover {
+    min-height: 44px;
   }
 }
 
