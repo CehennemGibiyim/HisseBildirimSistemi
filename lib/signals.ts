@@ -74,7 +74,7 @@ function severity(ratio: number): Signal["severity"] {
   return "watch";
 }
 
-/** En etkili manseti secer; taze haber eskileri golgede birakir. */
+/** En etkili manşeti seçer; taze haber eskileri gölgede bırakır. */
 export function pickHeadline(items: NewsItem[]): { headline: NewsItem | null; impact: number } {
   if (!items.length) return { headline: null, impact: 0 };
 
@@ -107,7 +107,7 @@ function toSignal(
   const { headline, impact } = pickHeadline(newsFor(quote.symbol));
   const ratio = threshold > 0 ? metric.value / threshold : 1;
 
-  // Güç skoru: esigi ne kadar astigi + haber tonu + günün tepesine yakinlik.
+  // Güç skoru: eşiği ne kadar aştığı + haber tonu + günün tepesine yakınlık.
   let strength = 52 + Math.min(Math.max(ratio - 1, 0), 1.5) * 22;
   strength += Math.min(Math.max(impact, 0), 10) * 0.8;
   strength += quote.rangePos * 6;
@@ -134,6 +134,9 @@ function toSignal(
     volume: quote.volume,
     marketCap: quote.marketCap,
     rangePos: quote.rangePos,
+    streak: quote.streak ?? 0,
+    relVolume: quote.relVolume ?? 0,
+    week52High: quote.week52High ?? 0,
     headline,
     newsImpact: Math.round(impact * 10) / 10,
     detectedAt: detectedAt(`${quote.symbol}-${trigger}-${dayKey}`),
@@ -142,7 +145,8 @@ function toSignal(
 }
 
 /**
- * Esigi asan sinyalleri uretir. Kullanici hangi olcutu sectiyse sinyal o olcutle hesaplanir.
+ * Eşiği aşan sinyalleri üretir. "best" benzeri bir varsayım yoktur:
+ * kullanıcı hangi ölçütü seçtiyse sinyal o ölçütle hesaplanır.
  */
 export function buildSignals(
   quotes: ScanQuote[],

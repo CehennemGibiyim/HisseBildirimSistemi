@@ -15,6 +15,12 @@ export interface ScanRow {
   low: number;
   volume: number;
   marketCap: number;
+  /** Göreli hacim: hacim / 10 günlük ortalama hacim. */
+  relVolume?: number;
+  /** 52 haftalık zirve fiyatı. */
+  week52High?: number;
+  /** Kaç tarama turudur %10 üzerinde olduğu (kalıcılık). */
+  streak?: number;
 }
 
 export interface ScanQuote extends ScanRow {
@@ -57,6 +63,9 @@ export interface Signal {
   volume: number;
   marketCap: number;
   rangePos: number;
+  streak: number;
+  relVolume: number;
+  week52High: number;
   headline: NewsItem | null;
   newsImpact: number;
   detectedAt: number;
@@ -80,6 +89,11 @@ export interface MarketResponse {
   threshold: number;
   mode: BaselineMode;
   serverTime: number;
-  /** Tarama anlik goruntusunun uretildigi an (ms). */
+  /** Tarama anlık görüntüsünün üretildiği an (ms). */
   dataTime: number;
+}
+
+export interface NewsResponse {
+  items: Record<string, NewsItem[]>;
+  updatedAt: number;
 }
