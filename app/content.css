@@ -9,7 +9,7 @@
   align-items: center;
   gap: 5px;
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: var(--fs-3xs);
   text-transform: uppercase;
   letter-spacing: 0.09em;
   color: var(--up);
@@ -38,7 +38,7 @@
 
 .movers__labels {
   padding: 7px 8px 5px;
-  font-size: 9.5px;
+  font-size: var(--fs-3xs);
   text-transform: uppercase;
   letter-spacing: 0.07em;
   color: var(--muted);
@@ -60,7 +60,7 @@
 .movers__loading {
   padding: 20px;
   text-align: center;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--muted);
 }
 
@@ -84,7 +84,7 @@
 
 .mover__rank {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: var(--fs-3xs);
   color: var(--muted);
   text-align: right;
 }
@@ -100,13 +100,13 @@
   align-items: center;
   gap: 5px;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   letter-spacing: 0.02em;
 }
 
 .mover__name {
-  font-size: 9.5px;
+  font-size: var(--fs-3xs);
   color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
@@ -123,7 +123,7 @@
 
 .mover__price {
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   text-align: right;
   color: var(--text-2);
   font-variant-numeric: tabular-nums;
@@ -131,7 +131,7 @@
 
 .mover__chg {
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   font-weight: 600;
   text-align: right;
   font-variant-numeric: tabular-nums;
@@ -183,7 +183,7 @@
   padding: 10px;
   border-radius: 11px;
   border: 1px dashed var(--line-strong);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--muted);
   transition: 0.16s ease;
 }
@@ -210,7 +210,7 @@
 .tone {
   padding: 3px 8px;
   border-radius: 99px;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   font-weight: 600;
   border: 1px solid var(--line);
   color: var(--text-2);
@@ -288,7 +288,7 @@
   gap: 4px;
   padding: 1px 6px;
   border-radius: 5px;
-  font-size: 9px;
+  font-size: var(--fs-3xs);
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -316,19 +316,19 @@
 }
 
 .news__publisher {
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--text-2);
 }
 
 .news__time {
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--muted);
   margin-left: auto;
   font-family: var(--mono);
 }
 
 .news__title {
-  font-size: 13px;
+  font-size: var(--fs-md);
   line-height: 1.42;
   color: var(--text);
   transition: color 0.14s ease;
@@ -346,7 +346,7 @@
 
 .news__tags .tag {
   height: 17px;
-  font-size: 9px;
+  font-size: var(--fs-3xs);
   color: var(--violet);
   border-color: rgba(124, 140, 255, 0.22);
   background: rgba(124, 140, 255, 0.08);
@@ -368,7 +368,7 @@
   width: 100%;
   margin: 0 auto;
   padding: 14px 24px 22px;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   color: var(--muted);
   border-top: 1px solid var(--line);
 }
@@ -415,7 +415,7 @@
 }
 
 .toast__icon {
-  font-size: 15px;
+  font-size: var(--fs-lg);
   line-height: 1.2;
 }
 
@@ -427,7 +427,7 @@
 .toast__title {
   margin: 0;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   color: var(--text);
 }
@@ -439,7 +439,7 @@
 
 .toast__sub {
   margin: 3px 0 0;
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   color: var(--text-2);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -448,7 +448,7 @@
 }
 
 .toast__close {
-  font-size: 16px;
+  font-size: var(--fs-lg);
   line-height: 1;
   color: var(--muted);
   padding: 0 2px;
@@ -457,4 +457,3 @@
 .toast__close:hover {
   color: var(--text);
 }
-
