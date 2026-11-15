@@ -26,11 +26,14 @@ const COLUMNS = [
   "high",
   "low",
   "open",
+  "relative_volume_10d_calc",
+  "price_52_week_high",
 ];
 
 const OUTPUT = resolve(process.cwd(), "public/data/market.json");
 const LIMIT = 300;
 const NEWS_SYMBOLS = 8;
+const STREAK_FLOOR = 10;
 
 const NAME_SUFFIX =
   /\s+(Class\s+[A-Z]\s+)?(Common Stock|Ordinary Shares|Common Shares|Capital Stock|American Depositary Shares|Depositary Shares|Subordinate Voting Shares|Voting Shares|Registered Shares|Preferred Stock)\b.*$/i;
@@ -79,6 +82,9 @@ function parseRow(row) {
     low,
     volume: num(d[4]),
     marketCap: num(d[5]),
+    relVolume: num(d[10]),
+    week52High: num(d[11]),
+    streak: 0,
   };
 }
 
@@ -199,6 +205,15 @@ async function previous() {
   }
 }
 
+/** Önceki turun anlık görüntüsü (iş akışı her turda prev.json olarak kopyalar). */
+async function previousSnapshot() {
+  try {
+    return JSON.parse(await readFile(resolve(process.cwd(), "public/data/prev.json"), "utf8"));
+  } catch {
+    return null;
+  }
+}
+
 async function main() {
   let scanResult = null;
   let lastError = null;
@@ -223,6 +238,23 @@ async function main() {
   }
 
   const news = await collectNews(scanResult.rows);
+
+  // Kalıcılık: hisse kaç turdur %10 üzerinde?
+  const prev = await previousSnapshot();
+  const prevChange = new Map();
+  const prevStreak = new Map();
+  for (const row of prev?.quotes ?? []) {
+    prevChange.set(row.symbol, num(row.changePct));
+    prevStreak.set(row.symbol, num(row.streak));
+  }
+  for (const row of scanResult.rows) {
+    if (row.changePct < STREAK_FLOOR) {
+      row.streak = 0;
+      continue;
+    }
+    const before = prevChange.get(row.symbol);
+    row.streak = before !== undefined && before >= STREAK_FLOOR ? (prevStreak.get(row.symbol) ?? 0) + 1 : 1;
+  }
 
   const payload = {
     fetchedAt: Date.now(),
