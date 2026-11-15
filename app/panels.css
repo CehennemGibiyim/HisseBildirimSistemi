@@ -22,14 +22,14 @@
   align-items: center;
   gap: 8px;
   margin: 0;
-  font-size: 13px;
+  font-size: var(--fs-md);
   font-weight: 650;
   letter-spacing: 0.01em;
 }
 
 .panel__title-sym {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 600;
   color: var(--amber);
   padding: 2px 7px;
@@ -40,13 +40,13 @@
 
 .panel__sub {
   margin: 3px 0 0;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--muted);
 }
 
 .count {
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   font-weight: 700;
   min-width: 19px;
   height: 19px;
@@ -97,7 +97,7 @@
 .hero__symbol-row h2 {
   margin: 0;
   font-family: var(--mono);
-  font-size: 26px;
+  font-size: var(--fs-2xl);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
@@ -111,7 +111,7 @@
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.035);
   color: var(--text-2);
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
@@ -124,7 +124,7 @@
 
 .hero__name {
   margin: 5px 0 0;
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   color: var(--muted);
 }
 
@@ -137,7 +137,7 @@
 
 .hero__last {
   font-family: var(--mono);
-  font-size: 27px;
+  font-size: var(--fs-2xl);
   font-weight: 600;
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
@@ -148,18 +148,18 @@
   align-items: baseline;
   gap: 7px;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: var(--fs-md);
   font-weight: 600;
 }
 
 .hero__chg em {
   font-style: normal;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   opacity: 0.8;
 }
 
 .hero__updated {
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   color: var(--muted);
 }
 
@@ -184,7 +184,7 @@
 }
 
 .metric span {
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   text-transform: uppercase;
   letter-spacing: 0.07em;
   color: var(--muted);
@@ -192,7 +192,7 @@
 
 .metric strong {
   font-family: var(--mono);
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -220,7 +220,7 @@
 .seg button {
   padding: 4px 11px;
   border-radius: 7px;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 600;
   color: var(--muted);
   transition: 0.15s ease;
@@ -242,7 +242,7 @@
 }
 
 .chart-toolbar__note {
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   color: var(--muted);
   font-family: var(--mono);
 }
@@ -271,7 +271,7 @@
   justify-content: center;
   gap: 8px;
   background: rgba(8, 12, 17, 0.72);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--muted);
   backdrop-filter: blur(2px);
   text-align: center;
@@ -279,7 +279,7 @@
 }
 
 .chart-overlay__title {
-  font-size: 13px;
+  font-size: var(--fs-md);
   font-weight: 600;
   color: var(--text-2);
 }
@@ -312,7 +312,7 @@
   gap: 14px;
   flex-wrap: wrap;
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: var(--fs-3xs);
   color: var(--muted);
   pointer-events: none;
 }
@@ -329,7 +329,7 @@
 
 .chart-legend__source {
   margin-left: auto;
-  font-size: 9px;
+  font-size: var(--fs-3xs);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.32);
@@ -427,14 +427,14 @@
 
 .signal__sym {
   font-family: var(--mono);
-  font-size: 14px;
+  font-size: var(--fs-md);
   font-weight: 700;
   letter-spacing: 0.03em;
 }
 
 .signal__pct {
   font-family: var(--mono);
-  font-size: 17px;
+  font-size: var(--fs-lg);
   font-weight: 700;
   color: var(--up);
   font-variant-numeric: tabular-nums;
@@ -442,7 +442,7 @@
 }
 
 .signal__name {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
@@ -455,7 +455,7 @@
   gap: 4px;
   padding: 2px 7px;
   border-radius: 99px;
-  font-size: 9.5px;
+  font-size: var(--fs-3xs);
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -491,7 +491,7 @@
 
 .signal__range-label {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: var(--fs-3xs);
   color: var(--muted);
   white-space: nowrap;
 }
@@ -505,7 +505,7 @@
   align-items: center;
   gap: 6px;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--text-2);
   flex-wrap: wrap;
 }
@@ -529,7 +529,7 @@
 }
 
 .signal__strength-label {
-  font-size: 9.5px;
+  font-size: var(--fs-3xs);
   text-transform: uppercase;
   letter-spacing: 0.07em;
   color: var(--muted);
@@ -553,7 +553,7 @@
 
 .signal__strength-value {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--text-2);
   min-width: 18px;
   text-align: right;
@@ -563,7 +563,7 @@
   display: flex;
   align-items: flex-start;
   gap: 6px;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   line-height: 1.35;
   color: var(--text-2);
   padding: 6px 8px;
@@ -609,7 +609,7 @@
 }
 
 .signal__hint {
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--muted);
   opacity: 0;
   transition: opacity 0.15s ease;
@@ -618,7 +618,6 @@
 .signal:hover .signal__hint {
   opacity: 1;
 }
-
 
 /* ------------------------------ near / empty --------------------------- */
 
@@ -630,7 +629,7 @@
 
 .near__title {
   margin: 0 0 7px;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
@@ -647,7 +646,7 @@
 
 .near__sym {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 600;
   width: 44px;
   color: var(--text-2);
@@ -670,7 +669,7 @@
 
 .near__pct {
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   color: var(--text);
   width: 46px;
   text-align: right;
@@ -678,7 +677,7 @@
 
 .near__target {
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: var(--fs-3xs);
   color: var(--muted);
   width: 36px;
 }
@@ -694,14 +693,14 @@
 }
 
 .empty__icon {
-  font-size: 20px;
+  font-size: var(--fs-xl);
   color: var(--muted);
   opacity: 0.6;
 }
 
 .empty__title {
   margin: 6px 0 4px;
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   color: var(--text-2);
 }
@@ -709,8 +708,7 @@
 .empty__text {
   margin: 0 auto;
   max-width: 300px;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--muted);
   line-height: 1.5;
 }
-
