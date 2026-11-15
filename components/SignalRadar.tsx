@@ -53,6 +53,7 @@ function SignalCard({
         <span>{fmtPrice(signal.price)}</span>
         <span className="signal__dot" />
         <span className="signal__age">{timeAgo(signal.detectedAt)}</span>
+        {signal.streak >= 2 && <span className="streak">{signal.streak} tur</span>}
       </div>
 
       <div className="signal__strength">
