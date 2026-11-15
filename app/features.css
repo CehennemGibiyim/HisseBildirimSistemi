@@ -1,0 +1,310 @@
+/* ----------------- takip listesi · portföy · kalıcılık ------------------ */
+
+.star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1;
+  transition: 0.15s ease;
+}
+
+.star:hover {
+  color: var(--amber);
+  border-color: rgba(255, 176, 32, 0.45);
+}
+
+.star.is-on {
+  color: var(--amber);
+  border-color: rgba(255, 176, 32, 0.45);
+  background: var(--amber-dim);
+}
+
+.mover__star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  background: none;
+  color: rgba(255, 255, 255, 0.22);
+  font-size: var(--fs-2xs);
+  line-height: 1;
+  transition: 0.15s ease;
+}
+
+.mover__star:hover,
+.mover__star.is-on {
+  color: var(--amber);
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  transition: 0.15s ease;
+}
+
+.filter-chip:hover {
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.filter-chip.is-on {
+  color: var(--amber);
+  border-color: rgba(255, 176, 32, 0.42);
+  background: var(--amber-dim);
+}
+
+.streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 176, 32, 0.26);
+  background: var(--amber-dim);
+  color: #ffc860;
+  font-family: var(--mono);
+  font-size: var(--fs-3xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* ------------------------------ ek metrikler ---------------------------- */
+
+.extra-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: -2px 18px 12px;
+}
+
+.extra-metric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 5px 9px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.025);
+  font-size: var(--fs-2xs);
+  color: var(--muted);
+}
+
+.extra-metric strong {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* -------------------------------- portföy ------------------------------- */
+
+.panel--portfolio .panel__head {
+  padding-bottom: 10px;
+}
+
+.portfolio__pl {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.portfolio__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+}
+
+.portfolio__empty {
+  margin: 0;
+  padding: 2px;
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.portfolio__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.portfolio__sym {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  text-align: left;
+}
+
+.portfolio__sym strong {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.portfolio__sym span {
+  font-size: var(--fs-3xs);
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.portfolio__val {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.portfolio__val span {
+  display: block;
+  font-size: var(--fs-3xs);
+  font-weight: 600;
+}
+
+.portfolio__remove {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: var(--fs-md);
+  line-height: 1;
+}
+
+.portfolio__remove:hover {
+  color: var(--down);
+  background: var(--down-dim);
+}
+
+.portfolio__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 4px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  color: var(--text-2);
+}
+
+.portfolio__total em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.portfolio__form {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) minmax(0, 0.9fr) auto;
+  gap: 6px;
+  padding: 0 10px 11px;
+}
+
+.portfolio__form input {
+  min-width: 0;
+  width: 100%;
+  padding: 8px 9px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  outline: none;
+}
+
+.portfolio__form input:focus {
+  border-color: rgba(255, 176, 32, 0.45);
+}
+
+.portfolio__form input::placeholder {
+  color: var(--muted);
+}
+
+.portfolio__form button {
+  min-height: 36px;
+  padding: 0 11px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 176, 32, 0.4);
+  background: var(--amber-dim);
+  color: #ffd07a;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+.portfolio__form button:hover {
+  border-color: rgba(255, 176, 32, 0.65);
+}
+
+@media (max-width: 720px) {
+  .extra-metrics {
+    margin: -2px 14px 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .portfolio__form {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .portfolio__form button {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --------------------------- tablo etkileşimi --------------------------- */
+
+.movers__tools {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.mover {
+  cursor: pointer;
+}
+
+.mover:focus-visible,
+.signal:focus-visible,
+.star:focus-visible,
+.filter-chip:focus-visible,
+.mover__star:focus-visible,
+.portfolio__sym:focus-visible,
+.portfolio__remove:focus-visible {
+  outline: 2px solid rgba(255, 176, 32, 0.55);
+  outline-offset: 2px;
+}
